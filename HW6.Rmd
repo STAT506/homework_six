@@ -1,0 +1,36 @@
+---
+title: "HW6"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
+library(tidyverse)
+library(rstanarm)
+library(lme4)
+options(mc.cores = parallel::detectCores())
+```
+
+Recall the butterfly movement dataset from 505. Here we consider the entire set of step distances, rather than just a single one for each butterfly.
+
+```{r}
+butterfly <- read_csv('butterfly_move.csv') %>%
+  filter(!is.na(Step_Distance))
+```
+
+#### Q1. (4 points)
+Compute the average step distance for each butterfly. Show the results (or a subset of them) visually. (4 points)
+
+#### Q2. (4 points)
+Write out a hierarchical (or multilevel or mixed model) for a model that fits a different average for butterfly. 
+
+### Q3. (6 points)
+Fit a hierarchical (or multilevel or mixed model) for a model that fits a different average for butterfly. Report estimated values (with uncertainty) for all of the parameters in your model. 
+
+### Q4. (6 points)
+Plot and comment (_the what and why_) about the comparison between the raw mean distance traveled and estimates from the hierarchical model for the following butterflies. (6 points)
+
+```{r}
+display_butterflies <- tibble(Track.num = c(161, 162, 163, 164))
+```
+
